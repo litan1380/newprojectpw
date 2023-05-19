@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Random Number Generator with Delay</title>
+</head>
+
+<body>
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+    <p id="progressIndicator"></p>
+    <p id="output"></p>
+
+    <script>
+        function generateRandomNumber() {
+            var delay = 3; // Delay in seconds
+            var progressIndicator = document.getElementById("progressIndicator");
+            var output = document.getElementById("output");
+            progressIndicator.innerText = "Generating random number in " + delay + " seconds...";
+
+            var countdown = setInterval(function () {
+                delay--;
+                if (delay > 0) {
+                    progressIndicator.innerText = "Generating random number in " + delay + " seconds...";
+                } else {
+                    clearInterval(countdown);
+                    progressIndicator.innerText = "Generating random number...";
+                    var randomNumber = Math.floor(Math.random() * 100) + 1;
+                    output.innerText = "Generated random number: " + randomNumber;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

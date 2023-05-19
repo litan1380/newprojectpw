@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Store's Inventory</title>
+</head>
+
+<body>
+    <table id="inventoryTable">
+        <tr>
+            <th>Item</th>
+            <th>Price (USD)</th>
+            <th>Price (INR)</th>
+        </tr>
+    </table>
+
+    <script>
+        // Store's inventory object with item prices in USD
+        var inventory = {
+            "item1": 10,
+            "item2": 20,
+            "item3": 30,
+            "item4": 40,
+            "item5": 50
+        };
+
+        // Convert prices from USD to INR
+        var exchangeRate = 80;
+        var convertedInventory = Object.entries(inventory).map(function ([item, price]) {
+            var convertedPrice = price * exchangeRate;
+            return [item, convertedPrice];
+        });
+
+        // Update the inventory table with converted prices
+        var inventoryTable = document.getElementById("inventoryTable");
+        convertedInventory.forEach(function ([item, price]) {
+            var row = inventoryTable.insertRow();
+            var itemNameCell = row.insertCell();
+            itemNameCell.innerText = item;
+            var usdPriceCell = row.insertCell();
+            usdPriceCell.innerText = inventory[item];
+            var inrPriceCell = row.insertCell();
+            inrPriceCell.innerText = price;
+        });
+    </script>
+</body>
+
+</html>

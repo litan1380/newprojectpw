@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filtering and Capitalizing Books</title>
+</head>
+
+<body>
+    <div id="booksContainer">
+        <h2>Books Published After 2010 with Capitalized Author Names:</h2>
+        <ul id="booksList"></ul>
+    </div>
+
+    <script>
+        // Input list of books
+        var books = [
+            { title: "Book 1", author: "author 1", publicationYear: 2005 },
+            { title: "Book 2", author: "author 2", publicationYear: 2012 },
+            { title: "Book 3", author: "author 3", publicationYear: 2008 },
+            { title: "Book 4", author: "author 4", publicationYear: 2015 },
+            { title: "Book 5", author: "author 5", publicationYear: 2011 }
+        ];
+
+        // Filter and capitalize books
+        var filteredBooks = books.filter(function (book) {
+            return book.publicationYear > 2010;
+        });
+
+        filteredBooks = filteredBooks.map(function (book) {
+            book.author = book.author.toUpperCase();
+            return book;
+        });
+
+        // Update the HTML with filtered and capitalized books
+        var booksList = document.getElementById("booksList");
+        filteredBooks.forEach(function (book) {
+            var listItem = document.createElement("li");
+            listItem.innerText = book.title + " by " + book.author;
+            booksList.appendChild(listItem);
+        });
+    </script>
+</body>
+
+</html>

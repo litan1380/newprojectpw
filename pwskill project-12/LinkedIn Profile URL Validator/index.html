@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LinkedIn Profile URL Validator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            width: 100%;
+        }
+
+        .input-group-addon {
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+        }
+
+        .btn {
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>LinkedIn Profile URL Validator</h1>
+
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="input">LinkedIn Profile URL</label>
+                <input type="text" name="input" id="input" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn">Validate</button>
+        </form>
+
+        <div class="result"></div>
+    </div>
+
+    <script>
+        function validateLinkedInURL(input) {
+            var regex = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_-]{5,30}[a-zA-Z0-9]$/;
+            return regex.test(input);
+        }
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            var input = document.getElementById("input").value;
+            var result = validateLinkedInURL(input);
+            var output = result ? "Valid LinkedIn Profile URL" : "Invalid LinkedIn Profile URL";
+            document.querySelector(".result").innerHTML = output;
+        });
+    </script>
+</body>
+
+</html>
